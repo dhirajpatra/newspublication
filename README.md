@@ -22,7 +22,7 @@
 ####Technology used
 PHP 7/5.6, MySql >=5.5, Ubuntu Linux, Apache 2.4, Laravel 5.3
 
-Also used few libraries needed to prepare this application quickly and correctly like Auth, mailer etc.
+Also used few libraries needed to prepare this application quickly and correctly like Auth, mailer, phpunit etc.
 
 ---
 ####How to run
@@ -51,6 +51,12 @@ This application made with a short time as prototype.
 In production version definitely can upgrade with many test cases.
 More validations. More process to check.
  ```
+
+####Testing
+There are several different test cases written for the application. You can add more. To run the tests, you call run this command from application root.
+```
+phpunit
+```
 
 ####Diagram
 ![ScreenShot](dfd.png)
