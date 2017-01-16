@@ -21,6 +21,7 @@ use Illuminate\Http\Request;
 class NewsController extends Controller
 {
     /**
+     * open a news creating form
      * @return mixed
      */
     public function create()
@@ -33,6 +34,7 @@ class NewsController extends Controller
     }
 
     /**
+     * save news data along with image
      * @param Request $request
      * @return mixed
      */
@@ -72,6 +74,7 @@ class NewsController extends Controller
     }
 
     /**
+     * delete a news
      * @param Request $request
      * @return mixed
      */

@@ -17,7 +17,6 @@
         @include('layouts.partials.errors')
 
         {{ Form::open(['route' => 'register_path']) }}
-        {!! csrf_field() !!}
         <!--- Username Field --->
             <div class="form-group">
                 {{ Form::label('username', 'Username:') }}
@@ -40,7 +39,7 @@
             </div>
             <!--- Sign Up Field --->
             <div class="form-group">
-                {{ Form::submit('Sign Up', ['class' => 'btn btn-primary']) }}
+                {{ Form::submit('Sign Up', ['name' => 'signup', 'class' => 'btn btn-primary']) }}
             </div>
             {{ Form::close() }}
         </div>

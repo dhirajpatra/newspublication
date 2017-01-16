@@ -54,7 +54,7 @@ class SessionsController extends BaseController
         {
             return Redirect::back()->withInput()->withErrors(['credentials' => 'We were unable to sign you in']);
         }
-        Flash::message('Welcome back!');
+        \Session::flash('msg','Welcome back!');
         return Redirect::home();
     }
     /**

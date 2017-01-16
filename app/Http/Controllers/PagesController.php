@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\View;
 class PagesController extends BaseController
 {
     /**
+     * home page
      * @return mixed
      */
     public function home()

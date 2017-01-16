@@ -52,6 +52,7 @@ class RegistrationController extends BaseController
         {
             return Redirect::back()->withInput()->withErrors($validator);
         }
+        // confirmation code for validation
         $confirmation_code = hash_hmac('sha256', str_random(40), config('app.key'));
         User::create([
             'username' => Input::get('username'),

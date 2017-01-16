@@ -15,6 +15,7 @@ class Rss extends Model
     protected $table = 'rss_feeds';
 
     /**
+     * get details of rss feed
      * @return array
      */
     public function getDetails()
@@ -31,6 +32,7 @@ class Rss extends Model
     }
 
     /**
+     * get all news items
      * @return array|string
      */
     public function getItems()

@@ -43,6 +43,7 @@ class News extends Model
     }
 
     /**
+     * get news list for a feed type
      * @param $feedId
      * @return array
      */

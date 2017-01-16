@@ -22,6 +22,7 @@ use Illuminate\Http\Response;
 class RssController extends Controller
 {
     /**
+     * Create RSS Feed
      * @return string
      */
     public function getFeed()
@@ -31,6 +32,10 @@ class RssController extends Controller
         return response($feeds)->header('Content-Type', 'application/xml; charset=ISO-8859-1');
     }
 
+    /**
+     * get details of RSS feed 
+     * @return string
+     */
     private function _getDetails()
     {
         $rssFeedObj = new Rss();
