@@ -18,8 +18,7 @@ class SessionsController extends BaseController
 {
     public function __construct()
     {
-        //Redirect('guest', ['except' => ['destroy']]);
-        //Redirect('auth', ['only' => ['destroy']]);
+        
     }
 
     /**
