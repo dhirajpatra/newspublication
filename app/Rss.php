@@ -3,8 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\News;
 
+/**
+ * Class Rss
+ * @package App
+ */
 class Rss extends Model
 {
     /**
@@ -23,7 +26,6 @@ class Rss extends Model
         try {
             $rssList = Rss::all()
                 ->toArray();
-
             return $rssList;
 
         }catch (\Exception $e){
@@ -45,6 +47,5 @@ class Rss extends Model
         }catch (\Exception $e){
             return array();
         }
-
     }
 }

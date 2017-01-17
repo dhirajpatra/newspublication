@@ -7,6 +7,10 @@
  * Time: 1:10 PM
  */
 use App\User;
+
+/**
+ * Class UserTest
+ */
 class UserTest extends TestCase
 {
     /**

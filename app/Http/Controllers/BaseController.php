@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
+use Mockery\Exception;
 
+/**
+ * Class BaseController
+ * @package App\Http\Controllers
+ */
 class BaseController extends Controller {
     /**
      * Setup the layout used by the controller.
@@ -13,10 +17,14 @@ class BaseController extends Controller {
      */
     protected function setupLayout()
     {
-        if ( ! is_null($this->layout))
-        {
-            $this->layout = View::make($this->layout);
+        try {
+            if ( ! is_null($this->layout)) {
+                $this->layout = View::make($this->layout);
+            }
+            View::share('currentUser', Auth::user());
+        } catch (Exception $e) {
+            Flash::message('Something went wrong');
         }
-        View::share('currentUser', Auth::user());
+
     }
 }

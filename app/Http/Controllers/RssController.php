@@ -19,6 +19,10 @@ use App\News;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
+/**
+ * Class RssController
+ * @package App\Http\Controllers
+ */
 class RssController extends Controller
 {
     /**
@@ -27,9 +31,12 @@ class RssController extends Controller
      */
     public function getFeed()
     {
-        $feeds = $this->_getDetails();
-        //return View::make('rss.feed', ['feeds' => $feeds]);
-        return response($feeds)->header('Content-Type', 'application/xml; charset=ISO-8859-1');
+        try {
+            $feeds = $this->_getDetails();
+            return response($feeds)->header('Content-Type', 'application/xml; charset=ISO-8859-1');
+        } catch (Exception $e) {
+            Flash::message('Something went wrong');
+        }
     }
 
     /**
@@ -38,15 +45,15 @@ class RssController extends Controller
      */
     private function _getDetails()
     {
-        $rssFeedObj = new Rss();
-        $rssFeedList = $rssFeedObj->getDetails();
-        //print_r($rssFeedList); exit;
-        $details = '<?xml version="1.0" encoding="ISO-8859-1" ?>
+        try {
+            $rssFeedObj = new Rss();
+            $rssFeedList = $rssFeedObj->getDetails();
+
+            $details = '<?xml version="1.0" encoding="ISO-8859-1" ?>
 				<rss version="2.0">';
 
-        foreach($rssFeedList as $rssFeed)
-        {
-            $details .= '<channel>
+            foreach ($rssFeedList as $rssFeed) {
+                $details .= '<channel>
                             <title>'. $rssFeed['rss_feed_title'] .'</title>
                             <link>'. $rssFeed['rss_feed_link'] .'</link>
                             <description>'. $rssFeed['rss_feed_description'] .'</description>
@@ -59,14 +66,17 @@ class RssController extends Controller
                                 <height>'. $rssFeed['rss_feed_image_height'] .'</height>
                             </image>';
 
-            $items =  $this->_getItems($rssFeed['rss_feed_id']);
+                $items =  $this->_getItems($rssFeed['rss_feed_id']);
 
-            $details .= $items;
-            $details .= '</channel>
+                $details .= $items;
+                $details .= '</channel>
 				</rss>';
-        }
+            }
+            return $details;
 
-        return $details;
+        } catch (Exception $e) {
+            return array();
+        }
     }
 
     /**
@@ -76,19 +86,22 @@ class RssController extends Controller
      */
     private function _getItems($feedId)
     {
-        $newsObj = new News();
-        $newsItems = $newsObj->getNewsListForFeed($feedId);
+        try {
+            $newsObj = new News();
+            $newsItems = $newsObj->getNewsListForFeed($feedId);
 
-        $items = '';
-        foreach ($newsItems as $news)
-        {
-            $items .= '<item>
+            $items = '';
+            foreach ($newsItems as $news) {
+                $items .= '<item>
                             <title>'. $news["news_title"] .'</title>
                             <link>'. url('/newsimages/'. $news["news_photo"]) .'</link>
                             <description><![CDATA['. $news["news_details"] .']]></description>
                         </item>';
-        }
+            }
+            return $items;
 
-        return $items;
+        } catch (Exception $e) {
+            return array();
+        }
     }
 }

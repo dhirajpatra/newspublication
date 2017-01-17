@@ -2,11 +2,9 @@
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+
 /**
- * Created by PhpStorm.
- * User: dhirajwebappclouds
- * Date: 16/1/17
- * Time: 8:29 AM
+ * Class RssTest
  */
 class RssTest extends TestCase
 {

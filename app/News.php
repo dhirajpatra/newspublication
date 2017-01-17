@@ -4,6 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class News
+ * @package App
+ */
 class News extends Model
 {
     /**
@@ -20,7 +24,11 @@ class News extends Model
      */
     public function user()
     {
-        return $this->hasOne('App\User', 'id', 'news_reporter_id');
+        try {
+            return $this->hasOne('App\User', 'id', 'news_reporter_id');
+        } catch (Exception $e) {
+            Flash::message('Something went wrong');
+        }
     }
 
     /**
@@ -35,7 +43,7 @@ class News extends Model
                 ->orderBy('news_id', 'desc')
                 ->paginate($limit)
                 ->toArray();
-            //echo "<pre>"; print_r($news); exit;
+           
             return $news;
         }catch (\Exception $e){
             return array();

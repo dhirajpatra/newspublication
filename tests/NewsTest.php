@@ -10,10 +10,12 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Http\UploadedFile;
-
 use App\News;
 use App\User;
 
+/**
+ * Class NewsTest
+ */
 class NewsTest extends TestCase
 {
     //use WithoutMiddleware;
@@ -63,20 +65,14 @@ class NewsTest extends TestCase
     {
         $user = new User(array('username' => 'testuser'));
         $this->be($user);
-        //$this->withoutMiddleware();
         $absolutePathToFile = public_path() . 'newsimages/header_rss_btn.gif';
 
         $this->visit('/news')
-            //->see('Create News');
-        //$this->visitRoute('news_path', ['user_id' => 9])
             ->attach($absolutePathToFile, 'image')
             ->type('Test Title', 'title')
             ->type('Test details news', 'details')
             ->press('Save')
-            //->dontSee('success');
             ->assertResponseOk();
-            //->seePageIs('/');
-            //->see('Create News');
     }
 
     protected function setUp()
