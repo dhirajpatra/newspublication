@@ -13,9 +13,6 @@ class RssTest extends TestCase
      */
     public function testRssFeedsTable()
     {
-        factory(App\Rss::class)->create([
-            'rss_feed_title' => 'Top News',
-        ]);
         $this->seeInDatabase('rss_feeds', ['rss_feed_title' => 'Top News']);
     }
 

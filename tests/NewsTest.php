@@ -61,6 +61,9 @@ class NewsTest extends TestCase
             ->see('News Publications application.');
     }
 
+    /**
+     * this will test the form validation for create post
+     */
     public function testCreateNewsFormValidation()
     {
         $user = new User(array('username' => 'testuser'));
@@ -75,6 +78,9 @@ class NewsTest extends TestCase
             ->assertResponseOk();
     }
 
+    /**
+     * this will setup for image upload test for create post 
+     */
     protected function setUp()
     {
         parent::setUp();
