@@ -21,6 +21,10 @@ class RegistrationController extends BaseController
 {
     protected $mailer;
 
+    /**
+     * RegistrationController constructor.
+     * @param Mailer $mailer
+     */
     public function __construct(Mailer $mailer)
     {
         try {
@@ -45,10 +49,9 @@ class RegistrationController extends BaseController
         }
 
     }
+
     /**
-     * Create a new forum member.
-     *
-     * @return Response
+     * @return mixed
      */
     public function store()
     {
@@ -82,6 +85,7 @@ class RegistrationController extends BaseController
         }
 
     }
+    
     /**
      * Attempt to confirm a users account.
      *
