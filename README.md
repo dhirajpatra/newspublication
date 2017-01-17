@@ -22,6 +22,8 @@
 ####Technology used
 PHP 7/5.6, MySql >=5.5, Ubuntu Linux, Apache 2.4, Laravel 5.3
 
+PSR 4 standard code.
+
 Also used few libraries needed to prepare this application quickly and correctly like Auth, mailer, phpunit etc.
 
 ---
