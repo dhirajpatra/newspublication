@@ -18,8 +18,6 @@
 
         <?php echo e(Form::open(['route' => 'register_path'])); ?>
 
-        <?php echo csrf_field(); ?>
-
         <!--- Username Field --->
             <div class="form-group">
                 <?php echo e(Form::label('username', 'Username:')); ?>
@@ -50,7 +48,7 @@
             </div>
             <!--- Sign Up Field --->
             <div class="form-group">
-                <?php echo e(Form::submit('Sign Up', ['class' => 'btn btn-primary'])); ?>
+                <?php echo e(Form::submit('Sign Up', ['name' => 'signup', 'class' => 'btn btn-primary'])); ?>
 
             </div>
             <?php echo e(Form::close()); ?>
