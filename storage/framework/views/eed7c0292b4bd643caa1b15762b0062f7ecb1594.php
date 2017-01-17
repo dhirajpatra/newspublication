@@ -35,10 +35,22 @@
                 <?php echo e(Form::password('password', ['class' => 'form-control', 'required' => 'required'])); ?>
 
             </div>
+            <div class="form-group">
+                <div class="col-md-6 col-md-offset-4">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="remember" <?php echo e(old('remember') ? 'checked' : ''); ?>> Remember Me
+                        </label>
+                    </div>
+                </div>
+            </div>
             <!--- Sign In Field --->
             <div class="form-group">
                 <?php echo e(Form::submit('Sign In', ['name' => 'login', 'class' => 'btn btn-primary'])); ?>
 
+                <a class="btn btn-link" href="<?php echo e(url('/password/reset')); ?>">
+                    Forgot Your Password?
+                </a>
             </div>
             <?php echo e(Form::close()); ?>
 
