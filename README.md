@@ -1,7 +1,9 @@
 ##News Publication
+
 ####Objective
    This is a public news publishing portal where news can be published and disseminated by RSS.
- ####Functional Specifications
+
+####Functional Specifications
    Create a public news publishing system where people can report or read news
    News publishing web application
    1. Any user could register with an email address. The application sends a verification link to the email address. When the user clicks the link, the application asks for a new password (can be tested on localhost w/o need for a public domain). Now the user is registered and is able to publish news. Without this verification user cannot publish news.
