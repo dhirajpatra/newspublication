@@ -52,22 +52,22 @@ Route::post('login', [
 Route::get('logout', [
     'as' => 'logout_path',
     'uses' => 'SessionsController@destroy',
-]);
+])->middleware('auth');
 /*
  * News
  */
 Route::get('news', [
     'as' => 'news_path',
     'uses' => 'NewsController@create'
-]);
+])->middleware('auth');
 Route::post('news', [
     'as' => 'news_path',
     'uses' => 'NewsController@store'
-]);
+])->middleware('auth');
 Route::delete('news/delete/{id}', [
     'uses' => 'NewsController@delete',
     'as' => 'news_delete'
-]);
+])->middleware('auth');
 /*
  * RSS
  */

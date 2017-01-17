@@ -39,7 +39,7 @@
                 <td width="10%"><?php echo e($news['user']['username']); ?></td>
                 <td width="10%"><?php echo e(Carbon\Carbon::parse($news['created_at'])->format('d-m-Y')); ?></td>
                 <td>
-                        <?php if( isset(Auth::user()->username)): ?>
+                        <?php if(Auth::check()): ?>
                     <?php echo e(Form::open(['route' => ['news_delete', Crypt::encrypt($news['news_id'])], 'method' => 'delete'])); ?>
 
                     <?php echo e(Form::hidden('news_id', $news['news_id'])); ?>
@@ -56,7 +56,7 @@
 
         <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
         </table>
-        <?php if( isset(Auth::user()->username) ): ?>
+        <?php if(Auth::check()): ?>
             <?php echo e(link_to_route('news_path', 'Create News', null, ['class' => 'btn btn-lg btn-primary'])); ?>
 
         <?php else: ?>

@@ -30,7 +30,7 @@ class NewsController extends Controller
     {
         try {
             // if user not logged in
-            if(!isset(Auth::user()->username)){
+            if(!Auth::check()){
                 return redirect('/');
             }
             return View::make('news.create');

@@ -38,7 +38,7 @@
                 <td width="10%">{{ $news['user']['username'] }}</td>
                 <td width="10%">{{ Carbon\Carbon::parse($news['created_at'])->format('d-m-Y') }}</td>
                 <td>
-                        @if( isset(Auth::user()->username))
+                        @if(Auth::check())
                     {{ Form::open(['route' => ['news_delete', Crypt::encrypt($news['news_id'])], 'method' => 'delete']) }}
                     {{ Form::hidden('news_id', $news['news_id']) }}
                     {{ Form::submit('Delete', ['class' => 'btn btn-warning form-control']) }}
@@ -51,7 +51,7 @@
 
         @endforeach
         </table>
-        @if( isset(Auth::user()->username) )
+        @if(Auth::check())
             {{ link_to_route('news_path', 'Create News', null, ['class' => 'btn btn-lg btn-primary']) }}
         @else
             {{ link_to_route('register_path', 'Sign Up', null, ['class' => 'btn btn-lg btn-primary']) }}

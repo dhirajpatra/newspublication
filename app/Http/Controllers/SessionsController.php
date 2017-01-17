@@ -48,16 +48,21 @@ class SessionsController extends BaseController
                 'username' => 'required|exists:users',
                 'password' => 'required'
             ];
+
             $validator = Validator::make(Input::only('username', 'email', 'password'), $rules);
+
             if ($validator->fails()) {
                 return Redirect::back()->withInput()->withErrors($validator);
             }
+
             $credentials = [
                 'username' => Input::get('username'),
                 'password' => Input::get('password'),
                 'confirmed' => 1
             ];
-            if ( ! Auth::attempt($credentials)) {
+
+            $remember = Input::get('remember');
+            if ( ! Auth::attempt($credentials, $remember) ) {
                 return Redirect::back()->withInput()->withErrors(['credentials' => 'We were unable to sign you in']);
             }
             \Session::flash('msg','Welcome back!');
