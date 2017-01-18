@@ -24,6 +24,7 @@ class NewsTest extends TestCase
      */
     public function testCreate()
     {
+        // by passing authentication
         $this->withoutMiddleware();
         $response = $this->call('POST', 'news', array(
             '_token' => csrf_token(),
@@ -36,6 +37,7 @@ class NewsTest extends TestCase
      */
     public function testList()
     {
+        // get all news
         $list = News::all();
         $this->visit('/')
             ->assertNotNull($list);
@@ -46,6 +48,7 @@ class NewsTest extends TestCase
      */
     public function testDelete()
     {
+        // bypassing authentication
         $this->withoutMiddleware();
         $response = $this->call('DELETE', '/news/delete/eyJpdiI6IkJha0NmMzR5UzVRUG5FekdqMmRYQ3c9PSIsInZhbHVlIjoieEdSVExxUjhzdWw1NlJxTmNSOFVVZz09IiwibWFjIjoiYzQwOWIxMjg2ZjFiODg4OTVlN2M3YmRhMmJkZjVjM2U0MmYyMWJkZmJlZGU1NzYxNjg0MTRhOTQ5OWM4ODFiOCJ9', ['_token' => csrf_token()]);
         $this->assertEquals(500, $response->getStatusCode());
@@ -66,6 +69,7 @@ class NewsTest extends TestCase
      */
     public function testCreateNewsFormValidation()
     {
+        // fake user
         $user = new User(array('username' => 'testuser'));
         $this->be($user);
         $absolutePathToFile = public_path() . 'newsimages/header_rss_btn.gif';
@@ -78,21 +82,4 @@ class NewsTest extends TestCase
             ->assertResponseOk();
     }
 
-    /**
-     * this will setup for image upload test for create post 
-     */
-    protected function setUp()
-    {
-        parent::setUp();
-
-        $_FILES = array(
-            'image'    =>  array(
-                'name'      =>  'header_rss_btn.gif',
-                'tmp_name'  =>  __DIR__ . '/_files/header_rss_btn.gif',
-                'type'      =>  'image/gif',
-                'size'      =>  499,
-                'error'     =>  0
-            )
-        );
-    }
 }
