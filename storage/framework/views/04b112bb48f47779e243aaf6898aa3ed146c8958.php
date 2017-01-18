@@ -11,9 +11,9 @@
 <?php $__env->startSection('content'); ?>
 
     <div class="container">
-        <h2>Crossover News Publications</h2>
+        <h2>Our News Publications</h2>
         <p>
-            Welcome to the Crossover News Publications application.
+            Welcome to the Our News Publications application.
         </p>
         <?php if(Session::has('msg')): ?>
             <div class="alert alert-info">

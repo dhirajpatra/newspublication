@@ -51,7 +51,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://crossover/'),
+    'url' => env('APP_URL', 'http://ournewspublication/'),
 
     /*
     |--------------------------------------------------------------------------

@@ -22,11 +22,11 @@ class RssTest extends TestCase
     public function testWeSeeRssFeeds()
     {
         $this->visit('/rss')
-            ->see('Subscribe to Crossover News\'s RSS (Really Simple Syndication) feeds to get news delivered directly to your desktop!');
+            ->see('Subscribe to our News\'s RSS (Really Simple Syndication) feeds to get news delivered directly to your desktop!');
     }
 
     /**
-     * this will test whether click on the home page link rss page open or not
+     * this will test whether click on the home page rss feed link to rss page open or not
      */
     public function testClickToRss()
     {
