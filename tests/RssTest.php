@@ -24,4 +24,14 @@ class RssTest extends TestCase
         $this->visit('/rss')
             ->see('Subscribe to Crossover News\'s RSS (Really Simple Syndication) feeds to get news delivered directly to your desktop!');
     }
+
+    /**
+     * this will test whether click on the home page link rss page open or not
+     */
+    public function testClickToRss()
+    {
+        $this->visit('/')
+            ->click('RSS Feed')
+            ->seePageIs('/rss');
+    }
 }
